@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './todo.css';
+import './todo.scss';
 import styled from 'styled-components';
 
 const ButtonListStyled = styled.button`
@@ -13,6 +13,10 @@ const ButtonListStyled = styled.button`
     width: 60px;
     text-transform: uppercase;
 `;
+// ---- random - color- task----
+const generateColor = () => {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+};
 
 const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
     // function --- Delete Task
@@ -69,17 +73,19 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
     };
 
     return (
-        <div>
-            <li className={'listTextString'}>
+        <div className={'listTextString'}>
+            <li>
                 {isEdit ? (
                     <input type="text" value={todoText} onChange={changeHandler} onBlur={saveHandler} />
                 ) : (
                     <span className={`${todo.completed ? 'completed' : ''}`}>{todoText}</span>
                 )}
             </li>
-            <ButtonListStyled onClick={completeHandler}>Done!</ButtonListStyled>
-            <ButtonListStyled onClick={editHandler}>Edit</ButtonListStyled>
-            <ButtonListStyled onClick={deleteHandler}>Delete</ButtonListStyled>
+            <div className={'buttonBlock'}>
+                <ButtonListStyled onClick={completeHandler}>Done!</ButtonListStyled>
+                <ButtonListStyled onClick={editHandler}>Edit</ButtonListStyled>
+                <ButtonListStyled onClick={deleteHandler}>Delete</ButtonListStyled>
+            </div>
         </div>
     );
 };

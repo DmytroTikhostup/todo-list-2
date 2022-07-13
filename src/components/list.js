@@ -1,11 +1,11 @@
 import React from 'react';
 import Todo from './todo';
-import './todo.css';
+import './todo.scss';
 import styled from 'styled-components';
 
 const WrapperStyledOl = styled.ol`
     width: auto;
-    font-size: 16px;
+    font-size: 20px;
     margin: 0 20% 0 20%;
     text-align: left;
 `;

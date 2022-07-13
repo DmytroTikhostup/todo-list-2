@@ -1,5 +1,5 @@
 import React from 'react';
-import './todo.css';
+import './todo.scss';
 import styled from 'styled-components';
 
 const InputStyled = styled.input`

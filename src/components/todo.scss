@@ -7,6 +7,25 @@ body {
     background: linear-gradient(90deg, rgb(80, 90, 98) 0%, rgb(209, 254, 255) 100%);
 }
 
+.listTextString {
+    // background-color: $primary-color;
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    box-sizing: border-box;
+    margin-top: 15px;
+    padding: 5px;
+    border: 1px black solid;
+    border-radius: 10px;
+}
+
+.buttonBlock {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+}
 /* button {
     border: 0;
     outline: 0;
