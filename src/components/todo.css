@@ -1,0 +1,42 @@
+.completed {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
+body {
+    background: linear-gradient(90deg, rgb(80, 90, 98) 0%, rgb(209, 254, 255) 100%);
+}
+
+/* button {
+    border: 0;
+    outline: 0;
+    padding: 2px 5px 2px 5px;
+    margin-right: 5px;
+    background: rgb(113, 240, 213);
+    border-radius: 5px;
+    cursor: pointer;
+    width: 60px;
+    text-transform: uppercase;
+} */
+
+/* ol {
+    /* text-transform: uppercase; */
+/* width: auto; */
+/* font-size: 16px; */
+/* margin: 0 20% 0 20%; */
+/* text-align: left; */
+/* } */
+
+/* .serverbutton {
+    border: 0;
+    outline: 0;
+    padding: 2px 5px 2px 5px;
+    margin-right: 5px;
+    background: rgba(255, 170, 22, 0.674);
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+} */
+/* input {
+    width: 50%;
+} */
