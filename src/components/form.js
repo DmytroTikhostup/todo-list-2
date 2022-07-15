@@ -30,6 +30,11 @@ const ServerButton = styled.button`
     width: auto;
 `;
 
+// ---- random - color- task----
+const generateColor = () => {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16);
+};
+
 const Form = ({ setInputText, todos, setTodos, inputText, counters, setCounters, inputURL }) => {
     const inputTextHandler = (e) => {
         // console.log(e.target.value);
@@ -39,7 +44,7 @@ const Form = ({ setInputText, todos, setTodos, inputText, counters, setCounters,
     const submitTodoHandler = (e) => {
         e.preventDefault();
         setInputText('');
-        setTodos([...todos, { text: inputText, completed: false, id: Math.random() * 1000 }]);
+        setTodos([...todos, { text: inputText, completed: false, id: Math.random() * 1000, background: generateColor() }]);
         setCounters({ createdCounter: counters.createdCounter + 1, editedCounter: counters.editedCounter, deletedCounter: counters.deletedCounter });
     };
 
