@@ -17,6 +17,8 @@ const ButtonListStyled = styled.button`
 const generateColor = () => {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
 };
+console.log(generateColor());
+console.log(`'${generateColor()}'`);
 
 const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
     // function --- Delete Task
@@ -73,7 +75,7 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
     };
 
     return (
-        <div className={'listTextString'}>
+        <div className={'listTextString'} style={{ background: '`${generateColor}`' }}>
             <li>
                 {isEdit ? (
                     <input type="text" value={todoText} onChange={changeHandler} onBlur={saveHandler} />
