@@ -8,6 +8,7 @@ const WrapperStyledOl = styled.ol`
     font-size: 20px;
     margin: 0 20% 0 20%;
     text-align: left;
+    background: ${(props) => props.generateColor};
 `;
 
 const List = ({ todos, setTodos, setEditText, counters, setCounters }) => {

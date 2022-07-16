@@ -27,6 +27,11 @@ function App() {
         getLocalStorage();
     }, []);
 
+    // ---------------------------------------------------
+    const generateColor = () => {
+        return '#' + Math.floor(Math.random() * 16777215).toString(16);
+    };
+
     const getLocalStorage = () => {
         if (localStorage.getItem('todos') === null) {
             localStorage.setItem('todos', JSON.stringify([]));
@@ -49,7 +54,7 @@ function App() {
                 <Counter className="Counter-section" counters={counters} setCounters={setCounters} />
             </header>
             <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText} counters={counters} setCounters={setCounters} />
-            <List setTodos={setTodos} todos={todos} counters={counters} setCounters={setCounters} />
+            <List setTodos={setTodos} todos={todos} counters={counters} setCounters={setCounters} color={generateColor()} />
         </div>
     );
 }

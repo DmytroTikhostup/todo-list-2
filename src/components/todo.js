@@ -66,6 +66,7 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
                         ...el,
                         edit: !el.edit,
                         text: value,
+                        background: generateColor(),
                     };
                 }
                 return el;
@@ -74,7 +75,7 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
     };
 
     return (
-        <div className={'listTextString'} style={{ background: `${generateColor()}` }}>
+        <div className={'listTextString'} style={{ background: todo.background }}>
             <li>
                 {isEdit ? (
                     <input
