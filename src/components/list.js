@@ -6,7 +6,7 @@ import styled from 'styled-components';
 const WrapperStyledOl = styled.ol`
     width: auto;
     font-size: 20px;
-    margin: 0 20% 0 20%;
+    margin: 0 18% 0 15%;
     text-align: left;
     background: ${(props) => props.generateColor};
 `;

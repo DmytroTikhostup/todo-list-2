@@ -3,20 +3,28 @@ import './todo.scss';
 import styled from 'styled-components';
 
 const InputStyled = styled.input`
-    border: 3px green solid;
+    :hover {
+        border: 3px gray solid;
+    }
     width: 50%;
+    height: 40px;
+    border-radius: 7px;
 `;
 
 const ButtonStyled = styled.button`
     border: 0;
     outline: 0;
     padding: 2px 5px 2px 5px;
-    margin-right: 5px;
+    margin: 10px;
     background: rgb(113, 240, 213);
     border-radius: 5px;
     cursor: pointer;
     width: 60px;
+    height: 40px;
     text-transform: uppercase;
+    :hover {
+        box-shadow: 0px 0px 5px 3px rgb(113, 240, 213);
+    }
 `;
 
 const ServerButton = styled.button`
@@ -26,8 +34,12 @@ const ServerButton = styled.button`
     margin-right: 5px;
     background: rgba(255, 170, 22, 0.674);
     border-radius: 5px;
+    height: 40px;
     cursor: pointer;
     width: auto;
+    :hover {
+        box-shadow: 0px 0px 5px 3px rgba(255, 170, 22, 0.674);
+    }
 `;
 
 // ---- random - color- task----

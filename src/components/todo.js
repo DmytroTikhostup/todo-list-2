@@ -78,12 +78,12 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
         <div className={'listTextString'} style={{ background: todo.background }}>
             <li>
                 {isEdit ? (
-                    <input
-                        type="text"
+                    <textarea
+                        type="submit"
                         value={todoText}
                         onChange={changeHandler}
                         onBlur={saveHandler}
-                        onKeyPress={(e) => (e.key === 'Enter' ? { saveHandler } : '')}
+                        // onKeyPress={(e) => (e.key === 'Enter' ? { saveHandler } : null)}
                     />
                 ) : (
                     <span className={`${todo.completed ? 'completed' : ''}`}>{todoText}</span>
