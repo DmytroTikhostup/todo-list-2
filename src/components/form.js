@@ -66,6 +66,7 @@ const Form = ({ setInputText, todos, setTodos, inputText, counters, setCounters,
                             completed: el.isCompleted,
                             edit: false,
                             disableButtons: false,
+                            background: generateColor(),
                         };
                     }),
                 ]);
