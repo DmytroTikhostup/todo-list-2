@@ -23,10 +23,6 @@ function App() {
         savelocalStorage();
     }, [todos, counters]);
 
-    useEffect(() => {
-        getLocalStorage();
-    }, []);
-
     // ---------------------------------------------------
     const generateColor = () => {
         return '#' + Math.floor(Math.random() * 16777215).toString(16);
@@ -46,6 +42,10 @@ function App() {
             setCounters(localCounter);
         }
     };
+
+    useEffect(() => {
+        getLocalStorage();
+    }, []);
 
     return (
         <div className="App">

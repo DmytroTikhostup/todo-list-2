@@ -76,8 +76,6 @@ const Form = ({ setInputText, todos, setTodos, inputText, counters, setCounters,
                             text: el.text,
                             id: Math.random() * 1000,
                             completed: el.isCompleted,
-                            edit: false,
-                            disableButtons: false,
                             background: generateColor(),
                         };
                     }),

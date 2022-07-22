@@ -83,7 +83,7 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
                         value={todoText}
                         onChange={changeHandler}
                         onBlur={saveHandler}
-                        // onKeyPress={(e) => (e.key === 'Enter' ? { saveHandler } : null)}
+                        onKeyPress={(e) => (e.key === 'Enter' ? saveHandler() : null)}
                     />
                 ) : (
                     <span className={`${todo.completed ? 'completed' : ''}`}>{todoText}</span>
