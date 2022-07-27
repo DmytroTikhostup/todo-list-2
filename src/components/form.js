@@ -1,10 +1,13 @@
 import React from 'react';
 import './todo.scss';
 import styled from 'styled-components';
+import { ADD_TODO } from '../redux/reducer';
+import { useDispatch } from 'react-redux';
 
 const InputStyled = styled.input`
     :hover {
-        border: 3px gray solid;
+        border: 3px green solid;
+        box-shadow: 0px 0px 5px 3px rgb(255, 255, 255);
     }
     width: 50%;
     height: 40px;
@@ -12,7 +15,6 @@ const InputStyled = styled.input`
 `;
 
 const ButtonStyled = styled.button`
-    border: 0;
     outline: 0;
     padding: 2px 5px 2px 5px;
     margin: 10px;
@@ -53,11 +55,14 @@ const Form = ({ setInputText, todos, setTodos, inputText, counters, setCounters,
         setInputText(e.target.value);
     };
 
+    const dispatch = useDispatch();
+
     const submitTodoHandler = (e) => {
         e.preventDefault();
         setInputText('');
         setTodos([...todos, { text: inputText, completed: false, id: Math.random() * 1000, background: generateColor() }]);
-        setCounters({ createdCounter: counters.createdCounter + 1, editedCounter: counters.editedCounter, deletedCounter: counters.deletedCounter });
+        // setCounters({ createdCounter: counters.createdCounter + 1, editedCounter: counters.editedCounter, deletedCounter: counters.deletedCounter });
+        dispatch(ADD_TODO);
     };
 
     const FetchTodos = (e) => {

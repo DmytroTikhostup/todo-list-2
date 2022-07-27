@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './todo.scss';
 import styled from 'styled-components';
+import { EDIT_TODO, DELETE_TODO } from '../redux/reducer';
+import { useDispatch } from 'react-redux';
 
 const ButtonListStyled = styled.button`
-    border: 0;
+    border: 1px black;
     outline: 0;
     padding: 2px 5px 2px 5px;
     margin-right: 5px;
@@ -17,17 +19,19 @@ const ButtonListStyled = styled.button`
 const generateColor = () => {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
 };
-console.log(generateColor());
+// console.log(generateColor());
 
 const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
     // function --- Delete Task
 
     const [isEdit, setIsEdit] = useState(false);
     const [todoText, setTodoText] = useState(text);
+    const dispatch = useDispatch();
 
     const deleteHandler = () => {
         setTodos(todos.filter((el) => el.id !== todo.id));
-        setCounters({ createdCounter: counters.createdCounter, editedCounter: counters.editedCounter, deletedCounter: counters.deletedCounter + 1 });
+        // setCounters({ DELETE_TODO });
+        dispatch(DELETE_TODO);
     };
 
     // function --- Done Task
@@ -57,7 +61,8 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
     const saveHandler = (event) => {
         const value = event.currentTarget.value;
 
-        setCounters({ createdCounter: counters.createdCounter, editedCounter: counters.editedCounter + 1, deletedCounter: counters.deletedCounter });
+        // setCounters({ EDIT_TODO });
+        dispatch(EDIT_TODO);
         setIsEdit(false);
         setTodos(
             todos.map((el) => {
@@ -98,5 +103,3 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
     );
 };
 export default Todo;
-
-// style={{ background: `${generateColor()}` }}

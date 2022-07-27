@@ -1,18 +1,35 @@
 import React, { useEffect, useState } from 'react';
 import './App.scss';
-
 import Form from './components/form';
 import List from './components/list';
-import Counter from './components/counter';
+import { useSelector } from 'react-redux';
+import { defaultState } from './redux/reducer';
 
 function App() {
     const [inputText, setInputText] = useState('');
     const [todos, setTodos] = useState([]);
-    const [counters, setCounters] = useState({
-        createdCounter: 0,
-        editedCounter: 0,
-        deletedCounter: 0,
-    });
+    // const [counters, setCounters] = useState({
+    //     createdCounter: 0,
+    //     editedCounter: 0,
+    //     deletedCounter: 0,
+    // });
+
+    // create counters --------------------------------------------------------
+
+    const counters = useSelector((state) => state.CounterReducer);
+
+    const Counter = ({ counters }) => {
+        return (
+            <div>
+                <p>Statistic my ToDo List</p>
+                <p>Created Tasks: {counters.createdCounter}</p>
+                <p>Edited Tasks: {counters.editedCounter}</p>
+                <p>Deleted Tasks: {counters.deletedCounter}</p>
+            </div>
+        );
+    };
+
+    // console.log(counters);
 
     const savelocalStorage = () => {
         localStorage.setItem('todos', JSON.stringify(todos));
@@ -39,7 +56,7 @@ function App() {
             localStorage.setItem('counters', JSON.stringify([]));
         } else {
             let localCounter = JSON.parse(localStorage.getItem('counters'));
-            setCounters(localCounter);
+            // setCounters(localCounter);
         }
     };
 
@@ -51,10 +68,11 @@ function App() {
         <div className="App">
             <header>
                 <h1 className="App-header">My first ToDo List on React </h1>
-                <Counter className="Counter-section" counters={counters} setCounters={setCounters} />
+                <Counter className="Counter-section" counters={counters} /*setCounters={setCounters} */ />
             </header>
-            <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText} counters={counters} setCounters={setCounters} />
-            <List setTodos={setTodos} todos={todos} counters={counters} setCounters={setCounters} color={generateColor()} />
+            <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText} counters={counters} /*setCounters={setCounters} */ />
+
+            <List setTodos={setTodos} todos={todos} counters={counters} /*setCounters={setCounters} */ color={generateColor()} />
         </div>
     );
 }

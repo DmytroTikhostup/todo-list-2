@@ -4,7 +4,7 @@
 }
 
 body {
-    background: linear-gradient(90deg, rgb(114, 114, 114) 0%, rgb(182, 217, 210) 100%);
+    background: linear-gradient(90deg, rgb(28, 27, 57) 0%, rgb(51, 56, 100) 100%);
 }
 
 .listTextString {
@@ -26,6 +26,7 @@ body {
     align-items: center;
     text-align: center;
     margin-top: 5px;
+    border: 1px black;
 }
 /* button {
     border: 0;
