@@ -3,25 +3,19 @@ import './App.scss';
 import Form from './components/form';
 import List from './components/list';
 import { useSelector } from 'react-redux';
-import { defaultState } from './redux/reducer';
 
 function App() {
     const [inputText, setInputText] = useState('');
     const [todos, setTodos] = useState([]);
-    // const [counters, setCounters] = useState({
-    //     createdCounter: 0,
-    //     editedCounter: 0,
-    //     deletedCounter: 0,
-    // });
 
     // create counters --------------------------------------------------------
 
-    const counters = useSelector((state) => state.CounterReducer);
+    const counters = useSelector((state) => state);
 
     const Counter = ({ counters }) => {
         return (
             <div>
-                <p>Statistic my ToDo List</p>
+                <p>Statistic:</p>
                 <p>Created Tasks: {counters.createdCounter}</p>
                 <p>Edited Tasks: {counters.editedCounter}</p>
                 <p>Deleted Tasks: {counters.deletedCounter}</p>
@@ -29,7 +23,12 @@ function App() {
         );
     };
 
-    // console.log(counters);
+    // ------- add generate color --------------------------------------------
+    const generateColor = () => {
+        return '#' + Math.floor(Math.random() * 16777215).toString(16);
+    };
+
+    // ------- add Local Storage ---------------------------------------------
 
     const savelocalStorage = () => {
         localStorage.setItem('todos', JSON.stringify(todos));
@@ -39,11 +38,6 @@ function App() {
     useEffect(() => {
         savelocalStorage();
     }, [todos, counters]);
-
-    // ---------------------------------------------------
-    const generateColor = () => {
-        return '#' + Math.floor(Math.random() * 16777215).toString(16);
-    };
 
     const getLocalStorage = () => {
         if (localStorage.getItem('todos') === null) {
@@ -64,15 +58,16 @@ function App() {
         getLocalStorage();
     }, []);
 
+    // -------------- RENDER ------------------------------------------------------------
     return (
         <div className="App">
             <header>
                 <h1 className="App-header">My first ToDo List on React </h1>
-                <Counter className="Counter-section" counters={counters} /*setCounters={setCounters} */ />
+                <Counter className="Counter-section" counters={counters} />
             </header>
-            <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText} counters={counters} /*setCounters={setCounters} */ />
+            <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText} counters={counters} />
 
-            <List setTodos={setTodos} todos={todos} counters={counters} /*setCounters={setCounters} */ color={generateColor()} />
+            <List setTodos={setTodos} todos={todos} counters={counters} color={generateColor()} />
         </div>
     );
 }

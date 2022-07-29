@@ -4,25 +4,26 @@ import styled from 'styled-components';
 import { EDIT_TODO, DELETE_TODO } from '../redux/reducer';
 import { useDispatch } from 'react-redux';
 
+// ----- styled elements -----------------------------------------------------------------
+
 const ButtonListStyled = styled.button`
     border: 1px black;
+    background: #8f54fc;
     outline: 0;
     padding: 2px 5px 2px 5px;
     margin-right: 5px;
-    background: rgb(113, 240, 213);
     border-radius: 5px;
     cursor: pointer;
-    width: 60px;
+    width: 50px;
     text-transform: uppercase;
 `;
 // ---- random - color- task----
 const generateColor = () => {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
 };
-// console.log(generateColor());
 
-const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
-    // function --- Delete Task
+const Todo = ({ text, todo, todos, setTodos }) => {
+    // function --- Delete Task ------------------------------
 
     const [isEdit, setIsEdit] = useState(false);
     const [todoText, setTodoText] = useState(text);
@@ -30,11 +31,10 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
 
     const deleteHandler = () => {
         setTodos(todos.filter((el) => el.id !== todo.id));
-        // setCounters({ DELETE_TODO });
         dispatch(DELETE_TODO);
     };
 
-    // function --- Done Task
+    // function --- Done Task --------------------------------
 
     const completeHandler = () => {
         setTodos(
@@ -47,7 +47,7 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
         );
     };
 
-    // function --- Edit Task
+    // function --- Edit Task -----------------------------------
 
     const changeHandler = (event) => {
         const value = event.currentTarget.value;
@@ -61,7 +61,6 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
     const saveHandler = (event) => {
         const value = event.currentTarget.value;
 
-        // setCounters({ EDIT_TODO });
         dispatch(EDIT_TODO);
         setIsEdit(false);
         setTodos(
@@ -79,8 +78,10 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
         );
     };
 
+    // -------------- RENDER ------------------------------------------------------------
+
     return (
-        <div className={'listTextString'} style={{ background: todo.background }}>
+        <div className={'listTextString'} style={{ background: todo.completed === true ? '#909090' : todo.background }}>
             <li>
                 {isEdit ? (
                     <textarea
@@ -95,9 +96,9 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
                 )}
             </li>
             <div className={'buttonBlock'}>
-                <ButtonListStyled onClick={completeHandler}>Done!</ButtonListStyled>
-                <ButtonListStyled onClick={editHandler}>Edit</ButtonListStyled>
-                <ButtonListStyled onClick={deleteHandler}>Delete</ButtonListStyled>
+                <ButtonListStyled onClick={completeHandler}>✔</ButtonListStyled>
+                <ButtonListStyled onClick={editHandler}>✎</ButtonListStyled>
+                <ButtonListStyled onClick={deleteHandler}>✘</ButtonListStyled>
             </div>
         </div>
     );

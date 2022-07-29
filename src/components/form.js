@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { ADD_TODO } from '../redux/reducer';
 import { useDispatch } from 'react-redux';
 
+// ----- styled elements -----------------------------------------------------------------
+
 const InputStyled = styled.input`
     :hover {
         border: 3px green solid;
@@ -12,20 +14,23 @@ const InputStyled = styled.input`
     width: 50%;
     height: 40px;
     border-radius: 7px;
+    padding-left: 10px;
 `;
 
 const ButtonStyled = styled.button`
+    color: white;
     outline: 0;
     padding: 2px 5px 2px 5px;
     margin: 10px;
-    background: rgb(113, 240, 213);
+    background: #8f54fc;
     border-radius: 5px;
     cursor: pointer;
     width: 60px;
     height: 40px;
     text-transform: uppercase;
     :hover {
-        box-shadow: 0px 0px 5px 3px rgb(113, 240, 213);
+        box-shadow: 0px 0px 5px 3px #8f54fc;
+        border: 1px black solid;
     }
 `;
 
@@ -34,24 +39,24 @@ const ServerButton = styled.button`
     outline: 0;
     padding: 2px 5px 2px 5px;
     margin-right: 5px;
-    background: rgba(255, 170, 22, 0.674);
+    background-color: #ff33e0;
     border-radius: 5px;
-    height: 40px;
+    height: 36px;
     cursor: pointer;
     width: auto;
     :hover {
-        box-shadow: 0px 0px 5px 3px rgba(255, 170, 22, 0.674);
+        box-shadow: 0px 0px 5px 3px #ff33e0;
+        border: 1px black solid;
     }
 `;
 
-// ---- random - color- task----
+// ---- random - color- task--------------------------------------------------------------
 const generateColor = () => {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
 };
 
-const Form = ({ setInputText, todos, setTodos, inputText, counters, setCounters, inputURL }) => {
+const Form = ({ setInputText, todos, setTodos, inputText }) => {
     const inputTextHandler = (e) => {
-        // console.log(e.target.value);
         setInputText(e.target.value);
     };
 
@@ -61,16 +66,12 @@ const Form = ({ setInputText, todos, setTodos, inputText, counters, setCounters,
         e.preventDefault();
         setInputText('');
         setTodos([...todos, { text: inputText, completed: false, id: Math.random() * 1000, background: generateColor() }]);
-        // setCounters({ createdCounter: counters.createdCounter + 1, editedCounter: counters.editedCounter, deletedCounter: counters.deletedCounter });
         dispatch(ADD_TODO);
     };
 
     const FetchTodos = (e) => {
         e.preventDefault();
         fetch('https://gist.githubusercontent.com/alexandrtovmach/0c8a29b734075864727228c559fe9f96/raw/c4e4133c9658af4c4b3474475273b23b4a70b4af/todo-task.json')
-            // let fetchURL = inputURL;
-            // console.log(fetchURL);
-            // fetch(fetchURL)
             .then((response) => response.json())
             .then((getTodos) => {
                 setTodos([
@@ -94,9 +95,8 @@ const Form = ({ setInputText, todos, setTodos, inputText, counters, setCounters,
             <ButtonStyled onClick={submitTodoHandler} type="submit">
                 Add
             </ButtonStyled>
-            {/* <input value={inputURL} type="text" /> */}
             <ServerButton className={'serverbutton'} onClick={FetchTodos}>
-                Download on URL
+                ➥
             </ServerButton>
         </form>
     );
