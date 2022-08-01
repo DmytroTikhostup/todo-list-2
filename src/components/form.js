@@ -2,6 +2,7 @@ import React from 'react';
 import './todo.scss';
 import styled from 'styled-components';
 import { ADD_TODO } from '../redux/reducer';
+import { CREATE_FORM } from '../redux/reducerForm';
 import { useDispatch } from 'react-redux';
 
 // ----- styled elements -----------------------------------------------------------------
@@ -55,6 +56,8 @@ const generateColor = () => {
     return '#' + Math.floor(Math.random() * 16777215).toString(16);
 };
 
+// ---- create form -----------------------------------------------------------------
+
 const Form = ({ setInputText, todos, setTodos, inputText }) => {
     const inputTextHandler = (e) => {
         setInputText(e.target.value);
@@ -65,8 +68,9 @@ const Form = ({ setInputText, todos, setTodos, inputText }) => {
     const submitTodoHandler = (e) => {
         e.preventDefault();
         setInputText('');
-        setTodos([...todos, { text: inputText, completed: false, id: Math.random() * 1000, background: generateColor() }]);
+        // setTodos([...todos, { text: inputText, completed: false, id: Math.random() * 1000, background: generateColor() }]);
         dispatch(ADD_TODO);
+        dispatch(CREATE_FORM);
     };
 
     const FetchTodos = (e) => {

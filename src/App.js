@@ -8,9 +8,10 @@ function App() {
     const [inputText, setInputText] = useState('');
     const [todos, setTodos] = useState([]);
 
-    // create counters --------------------------------------------------------
+    //----------------- create counters --------------------------------------------------------
 
     const counters = useSelector((state) => state);
+    const createForm = useSelector((state) => state);
 
     const Counter = ({ counters }) => {
         return (
@@ -65,7 +66,7 @@ function App() {
                 <h1 className="App-header">My first ToDo List on React </h1>
                 <Counter className="Counter-section" counters={counters} />
             </header>
-            <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText} counters={counters} />
+            <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText} counters={counters} createForm={createForm} />
 
             <List setTodos={setTodos} todos={todos} counters={counters} color={generateColor()} />
         </div>

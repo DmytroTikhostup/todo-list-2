@@ -1,4 +1,4 @@
-// ---- actions for Counters -------------------------------------------------------
+// ---- action for Counters -------------------------------------------------------
 
 export const ADD_TODO = { type: 'ADD_TODO', payload: 1 };
 export const EDIT_TODO = { type: 'EDIT_TODO', payload: 1 };
