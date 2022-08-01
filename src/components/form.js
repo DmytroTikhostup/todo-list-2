@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { ADD_TODO } from '../redux/reducer';
 import { CREATE_FORM } from '../redux/reducerForm';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // ----- styled elements -----------------------------------------------------------------
 
@@ -64,13 +65,14 @@ const Form = ({ setInputText, todos, setTodos, inputText }) => {
     };
 
     const dispatch = useDispatch();
+    const createForm = useSelector((state) => state);
 
     const submitTodoHandler = (e) => {
         e.preventDefault();
         setInputText('');
         // setTodos([...todos, { text: inputText, completed: false, id: Math.random() * 1000, background: generateColor() }]);
         dispatch(ADD_TODO);
-        dispatch(CREATE_FORM);
+        dispatch(CREATE_FORM(e.target.value));
     };
 
     const FetchTodos = (e) => {

@@ -1,11 +1,11 @@
 // ---- action for Form -------------------------------------------------------
 
-export const CREATE_FORM = {
+export const CREATE_FORM = (value) => ({
     type: 'CREATE_FORM',
     payload: {
-        text: state.target.value,
+        text: value,
     },
-};
+});
 
 // ---- Reducer for Form -------------------------------------------------------
 
