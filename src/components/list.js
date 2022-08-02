@@ -2,6 +2,7 @@ import React from 'react';
 import Todo from './todo';
 import './todo.scss';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 const WrapperStyledOl = styled.ol`
     width: auto;
@@ -12,21 +13,24 @@ const WrapperStyledOl = styled.ol`
 `;
 
 const List = ({ todos, setTodos, setEditText, counters, setCounters }) => {
+    const createList = useSelector((state) => state);
+
     return (
         <div>
             <WrapperStyledOl>
-                {todos.map((todo) => (
-                    <Todo
+                {createList.map((todo) => {
+                    <div>{todo.text}</div>;
+                    /* <Todo
                         key={todo.id}
-                        todo={todo}
+                        // todo={todo}
                         text={todo.text}
-                        setTodos={setTodos}
-                        todos={todos}
-                        setEditText={setEditText}
-                        counters={counters}
-                        setCounters={setCounters}
-                    />
-                ))}
+                        // setTodos={setTodos}
+                        // todos={todos}
+                        // setEditText={setEditText}
+                        // counters={counters}
+                        // setCounters={setCounters}
+                    />; */
+                })}
             </WrapperStyledOl>
         </div>
     );

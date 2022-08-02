@@ -3,6 +3,7 @@ import './todo.scss';
 import styled from 'styled-components';
 import { EDIT_TODO, DELETE_TODO } from '../redux/reducer';
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // ----- styled elements -----------------------------------------------------------------
 

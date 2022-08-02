@@ -7,8 +7,9 @@ import './App.scss';
 import { Provider } from 'react-redux';
 import { legacy_createStore } from 'redux';
 import CounterReducer from './redux/reducer';
+import FormReducer from './redux/reducerForm';
 
-const store = legacy_createStore(CounterReducer);
+const store = legacy_createStore(FormReducer);
 
 // ----------------------------------------------------------------------
 
